@@ -25,7 +25,7 @@
         border-radius: 5px;
     }
 
-    button, input[type="submit"] {
+    button, input[type="button"] {
         background-color: #4CAF50;
         color: white;
         padding: 10px 20px;
@@ -35,7 +35,7 @@
         margin-right: 10px;
     }
 
-    button:hover, input[type="submit"]:hover {
+    button:hover, input[type="button"]:hover {
         background-color: #45a049;
     }
 
@@ -51,7 +51,7 @@
 <p>Fill in the information below.</p>
 
 <form id="stepForm">
-     <div id="step1">
+    <div id="step1">
         <h2>Step 1: Personal Information</h2>
         <label>Full Name:</label>
         <input type="text" name="fullname" required><br><br>
@@ -61,7 +61,8 @@
 
         <button type="button" onclick="nextStep(2)">Next</button>
     </div>
-        <div id="step2" style="display:none;">
+
+    <div id="step2" style="display:none;">
         <h2>Step 2: Address Information</h2>
         <label>City:</label>
         <input type="text" name="city" required><br><br>
@@ -72,7 +73,8 @@
         <button type="button" onclick="nextStep(1)">Previous</button>
         <button type="button" onclick="nextStep(3)">Next</button>
     </div>
-        <div id="step3" style="display:none;">
+
+    <div id="step3" style="display:none;">
         <h2>Step 3: Additional Information</h2>
         <label>Phone Number:</label>
         <input type="text" name="phone" required><br><br>
@@ -81,9 +83,14 @@
         <textarea name="message" rows="4" cols="30"></textarea><br><br>
 
         <button type="button" onclick="nextStep(2)">Previous</button>
-        <input type="submit" value="Submit">
+        <input type="button" value="Submit" onclick="showThankYou()">
     </div>
 
+    <div id="thankYouMessage" style="display:none; text-align:center;">
+        <h2>Salam from Naveed! </h2>
+        <p>Thank you for completing the form.</p>
+        <p>Your information has been received.</p>
+    </div>
 </form>
 
 </body>
@@ -93,9 +100,20 @@
         document.getElementById("step1").style.display = "none";
         document.getElementById("step2").style.display = "none";
         document.getElementById("step3").style.display = "none";
+        document.getElementById("thankYouMessage").style.display = "none";
 
         // Show the selected step
         document.getElementById("step" + step).style.display = "block";
+    }
+
+    function showThankYou() {
+        // Hide all steps
+        document.getElementById("step1").style.display = "none";
+        document.getElementById("step2").style.display = "none";
+        document.getElementById("step3").style.display = "none";
+
+        // Show thank you message
+        document.getElementById("thankYouMessage").style.display = "block";
     }
 </script>
 </html>
